@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="movie" id="conteudo">
+        <div class="image">
+            <img [src]="'https://www.themoviedb.org/t/p/w440_and_h660_face' + movie.poster_path" alt="Movie Poster">
+        </div>
+        <div>
+            <h1>{{ movie.title }} ({{movie.release_date |  date:'YYYY'}})</h1>
+            <p>{{ movie.release_date | date:'dd/MM/YYYY'}} | {{ movie.genres[0].name }} | {{ movie.runtime }} min</p>
+            <div class="button">
+                <button type="button" class="btn btn-info"  matTooltip="Vote Average">{{ (movie.vote_average * 10).toFixed(0) }}% </button>
+                <button id="adding" mat-raised-button color="primary" (click)="toggleWatchlist(movie)">
+                    <ng-container *ngIf="estaFilmeWatchlist(movie); else naoEstaWatchlist ">
+                        <i class="fas fa-minus"></i> Remove from Watchlist
+                    </ng-container>
+                    <ng-template #naoEstaWatchlist>
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </ng-template>
+                </button>
+            </div>
+            <p>{{movie.tagline}}</p>
+            <h1>Overview</h1>
+            <p>{{ movie.overview }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="back">
+    <button mat-button color="primary" (click)="paginaInicial()">Back</button>
+    <button mat-button color="primary" (click)="paginaWatchlist()">Go to my Watchlist!</button>
+</div>

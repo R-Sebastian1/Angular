@@ -1,0 +1,55 @@
+<div *ngIf="!resposta" id="error">
+  <h2>Waiting for input...</h2>
+  <mat-spinner></mat-spinner>
+  <button type="button" class="btn btn-warning" (click)="goBack()">We must go back!</button>
+</div>
+
+<div *ngIf="resposta">
+  <div *ngIf="resposta && resposta.results.length === 0">
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ups! Something went wrong</h5>
+          </div>
+          <div class="modal-body">
+            <p>Must be missing something!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="goBack()">Go Back!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2>Nothing to see here :\</h2>
+          <h3>0</h3>
+          <h4>Results found!</h4>
+  </div>
+</div>
+
+<div *ngIf="resposta">
+  <div *ngIf="resposta.results.length>0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3"
+          *ngFor="let movie of resposta.results | paginate:{itemsPerPage:8, currentPage:p,totalItems:total}">
+          <mat-card class="card">
+            <img mat-card-image src="{{endereco}}{{movie.poster_path}}" alt="Poster">
+            <mat-card-content>
+              <p>{{movie.title}}</p>
+              <p>{{movie.release_date | date:'dd/MM/YYYY'}}</p>
+              <div class="text-end">
+                <button mat-fab color="warn" aria-label="Example icon button with a home icon" (click)="goToDetails(movie.id)">
+                  {{(movie.vote_average*10).toFixed(0)}}%
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="paginacao sticky-bottom">
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+ </div>
+</div>

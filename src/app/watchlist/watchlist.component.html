@@ -1,0 +1,33 @@
+<div *ngIf="watchlist">
+  <div *ngIf="watchlist.length>0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3"
+          *ngFor="let movie of watchlist | paginate:{itemsPerPage:8, currentPage:p,totalItems:total}">
+          <mat-card class="card">
+            <img mat-card-image src="{{endereco}}{{movie.poster_path}}" alt="Poster">
+            <mat-card-content>
+              <p>{{movie.title}}</p>
+              <p>{{movie.release_date | date:'dd/MM/YYYY'}}</p>
+              <div class="text-end">
+                <button mat-fab color="warn" aria-label="Example icon button with a home icon"
+                  (click)="goToDetails(movie.id)">
+                  {{(movie.vote_average*10).toFixed(0)}}%
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="paginacao sticky-bottom">
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<div id="popcorn" *ngIf="watchlist.length===0">
+  <h1>Waiting for your movies...</h1>
+  <p>Grab the popcorn!</p>
+  <img src="assets/popcorn.jpg" alt="">
+</div>

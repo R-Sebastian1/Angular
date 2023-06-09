@@ -1,0 +1,55 @@
+mat-card{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card:hover ul {
+    display: contents;
+    width: 80%;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+  }
+
+  p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:medium;
+    font-weight: bold;
+  }
+
+  .paginacao{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+    font-size:medium;
+    font-weight: bold;
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+  }
+  
+  .modal-body {
+    text-align: center;
+  }
+
+  h2,h3,h4{
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  #error{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

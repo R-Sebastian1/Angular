@@ -1,0 +1,23 @@
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3"  *ngFor="let items of filmes | paginate:{itemsPerPage:8, currentPage:p,totalItems:total}">
+        <mat-card class="card">
+          <img mat-card-image src="{{endereco}}{{items.poster_path}}" alt="Poster">
+          <mat-card-content>
+            <p>{{items.title}}</p>
+            <p>{{items.release_date | date:'dd/MM/YYYY'}}</p>
+            <div class="text-end">
+              <button mat-fab color="warn" matTooltip="Click me for details!" aria-label="Avarege" (click)="goToDetails(items.id)">
+                {{(items.vote_average*10).toFixed(0)}}%
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="paginacao sticky-bottom">
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  </div>
