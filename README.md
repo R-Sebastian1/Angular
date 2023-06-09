@@ -1,5 +1,5 @@
 # ProjetoFinalWeb2
-
+A Angular base project that emulates a movie website where you can search, see the most popular, top rated and add to your watchlist.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 
 ## Development server
